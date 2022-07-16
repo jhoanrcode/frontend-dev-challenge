@@ -1,0 +1,32 @@
+footer {
+    color: $white; 
+    background-color: $blue-800;
+    .copyright, .legal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-direction: row;
+        @include max-screen(){ flex-direction: column; } 
+    }
+    .copyright{
+        justify-content: center;
+        p{
+            font-family: $secondary;
+            font-size: $small;
+            max-width: 495px;
+        }
+        .logo img{max-width: 200px;}
+    }
+    .legal{
+        justify-content: space-between;
+        a{
+            margin-top: 6px;
+            margin-bottom: 6px;
+            &:hover { color: #a1d6e5; }
+        }
+        .logo img{max-width: 200px;}
+    }
+    .autor { font-size: $small; }
+
+}

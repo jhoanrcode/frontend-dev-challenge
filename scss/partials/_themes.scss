@@ -1,0 +1,138 @@
+/* [ THEME ] */
+@import "_mixin.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+body {
+    font-family: $default;
+    font-weight: $fw400;
+    color: $grey-800;
+    background-color: $white;
+    font-size: $regular;
+}
+
+a, a:hover {
+    color: inherit;
+    text-decoration: none;
+    background-color: transparent;
+    transition: color 250ms ease-in-out;
+}
+
+h1, h2, h3, h4, p, figure {
+  margin: 0;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+button {
+    font-family: inherit;
+}
+
+section {
+    margin: 0;
+}
+
+.separador{
+    height: 8px;
+    width: 100%;
+    margin: 16px auto;
+    border: 0;
+    background: repeating-linear-gradient( -45deg, transparent 0px, transparent 2px, $blue-700 2px, $blue-700 4px );
+}
+
+.formBuscar{
+    position: relative;
+    &__boton{
+        padding: 6px 12px;
+        position: absolute;
+        line-height: 1;
+        border: none;
+        border-radius: 4px;
+        background-color: $pink;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        &:hover, &:active{ background-color: $grey-600; } 
+    }
+    &__campo{
+        width: 100%;
+        height: 50px;
+        padding: 16px 70px 16px 24px;
+        line-height: inherit;
+        border: 1px solid $grey-300;
+        border-radius: 4px;
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis;
+        font-family: $default;
+        position: relative;
+    }
+    .error{
+        border: 1px solid red;
+    }
+}
+
+.modalBuscar{
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 160px; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.6); 
+    &__body {
+        position: relative;
+        background-color: $white;
+        margin: auto;
+        padding: 20px;
+        border-radius: 4px;
+        width: 50%;
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+        @include max-screen(){ width: 75%; } 
+    }
+}
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+
+div#tns1-ow,
+div#tns2-ow {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+.tns-nav{
+    text-align: center;
+    margin-top: 16px;
+    button {
+        background: $grey-200;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: none;
+        margin: 0 10px;
+    }
+    .tns-nav-active{
+        background: $grey-600; 
+    }
+}
+.tns-outer [data-action] { display: none; }

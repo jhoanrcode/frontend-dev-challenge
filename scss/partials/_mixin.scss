@@ -1,0 +1,13 @@
+@import "_breakpoint.scss";
+
+@mixin min-screen($resolucion: "sm"){
+    @media screen and (min-width: (map-get($breakpoints, $resolucion)))  {
+        @content;
+    }
+}
+
+@mixin max-screen($resolucion: "575px"){
+    @media screen and (max-width: $resolucion)  {
+        @content;
+    }
+}

@@ -1,0 +1,254 @@
+@import "_mixin.scss";
+
+%fuente-media {
+    font-size: $large;
+    font-weight: $fw700;
+    line-height: $xlarge;
+}
+
+
+.banner{
+    margin-top:64px;
+    @include max-screen(){ 
+        margin-top:48px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.bannerHero{
+    position: relative;
+    width: 100%;
+    max-height: 525px;
+    height: calc(100vh - 64px);
+    background-color: $grey-300;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../images/banner-1.jpg');
+    animation: bannerHero 18s infinite cubic-bezier(0, 0, 0.2, 1) ;
+    @include max-screen(){ 
+        max-height: 265px;
+        height: calc(100vh - 48px);
+    } 
+}
+
+.bannerBackground{
+    position: absolute;
+    height: 100%;
+    right: 45%; 
+    top: 50%;
+    padding: 0;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 46.87%, rgba(0, 0, 0, 0) 100%);
+    @include max-screen(){ 
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.45) 60%, rgba(0, 0, 0, 0.3) 80%, rgba(0, 0, 0, 0) 100%);
+        right: 25%; 
+    } 
+}
+.bannerTexto{
+    height: 100%;
+    display: flex;
+    padding: 0 15%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: flex-start;
+    color: $white;
+    &__title{
+        padding-bottom: 30px;
+        font-weight: $fw700;
+        line-height: 42px;
+        font-size: $xxlarge;
+        &--resaltar{
+            color: $pink;
+        }
+    }
+    &__subtitle{
+        padding-bottom: 10px;
+        @extend %fuente-media;
+    }
+    &__description{
+        font-size: $regular;
+        line-height: $large;
+    }
+    @include max-screen(){ 
+        padding: 0 5%;
+        &__title{
+            padding-bottom: 15px;
+            line-height: calc( $xlarge - 4px);
+            font-size: calc( $xlarge - 2px);
+        }
+        &__subtitle{
+            padding-bottom: 5px;
+            font-size: calc( $regular + 2px);
+            line-height: calc( $regular + 2px);
+        }
+        &__description{
+            font-size: calc( $small + 2px);
+            line-height: $regular;
+        }
+    } 
+}
+
+@keyframes bannerHero{
+    0%{ background-image: url('../images/banner-1.jpg');}
+    33%{ background-image: url('../images/banner-1.jpg'); }
+    34%{ background-image: url('../images/banner-2.jpg'); }
+    66%{ background-image: url('../images/banner-2.jpg'); }
+    67%{ background-image: url('../images/banner-3.jpg'); }
+    100%{ background-image: url('../images/banner-3.jpg'); }
+}
+
+.contenido{
+    margin-top: 52px;
+    margin-bottom: 52px;
+    .card{
+        border: none;
+        &:hover { 
+            .card-body {
+                &__title{
+                    color: $blue-800;
+                    transition: color 250ms ease-in-out;
+                }
+            }
+            .card-img-top{
+                transform: scale(1.08);
+                transition: all 400ms ease-in-out;
+            }
+        }
+        figure{
+            overflow: hidden;
+            position: relative;
+            .card-img-top{
+                transform: scale(1);
+                transition: all 400ms ease-in-out;
+            }
+        }
+    }
+    .card-body{
+        padding: 8px 0;
+        &__categoria{
+            font-size: $small;
+            line-height: $regular;
+            font-weight: $fw700;
+            color: $pink;
+            text-transform: uppercase;
+        }
+        &__title{
+            font-size: $large;
+            line-height: 28px;
+            color: $grey-800;
+            font-weight: $fw700;
+            padding-bottom: 2px;
+            @include min-screen("sm"){ padding-bottom: 8px; } 
+            
+        }
+        &__texto{
+            font-size: $regular;
+            line-height: $large;
+            color: $grey-800;
+            font-family: $secondary;
+        }
+    }
+    @include max-screen(){ 
+        margin-bottom: 32px;
+    } 
+
+}
+
+
+.faq{
+    h2{
+        padding-bottom: 12px;
+        @extend %fuente-media;
+        font-size: 28px;
+    }
+    .accordion {
+        font-size: $medium;
+        line-height: $large;
+        font-weight: $fw600;
+        .toggle {
+            position: relative;
+            display: block;
+            padding: 16px;
+            border-bottom: 1px solid $grey-200;
+        }
+        .toggle:after {
+            content: "\276E";
+            display: block;
+            position: absolute;
+            right: 18px;
+            top: 32%;
+            height: 20px;
+            width: 20px;
+            transform: rotate(270deg);
+            text-align: center;
+        }
+        .toggle-contents {
+            display: none;
+        }
+        &.active {
+            .toggle { border-bottom: 1px solid transparent; }
+            .toggle:after { transform: rotate(90deg); }
+            .toggle, .toggle:after { 
+                color: $blue-800; 
+                background-color: $grey-10;
+            }
+            .toggle-contents {
+                display: block;
+                font-size: $regular;
+                line-height: $large;
+                font-family: $secondary;
+                font-weight: $fw400;
+                padding: 4px 20px 22px;
+                background-color: $grey-10;
+            }
+            .toggle, .toggle-contents { 
+                animation-name: fade;
+                animation-duration: 0.65s;
+            }
+        }
+    }
+
+
+}
+
+@-webkit-keyframes fade {
+  from {opacity:0} 
+  to {opacity:1}
+}
+
+.testimonio{
+    margin-top: 60px;
+    margin-bottom: 60px;
+
+    .card--testimonion{
+        border-radius: 5px;
+        border: none;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        .card-body{
+            padding: 0;
+            text-align: center;
+            &__imagen{  }
+            &__texto{ 
+                font-size: $regular;
+                font-family: $secondary;
+                &--mensaje{
+                    font-style: italic;
+                    line-height: $large;
+                    margin: 16px auto;
+                    @include min-screen("lg"){ width: 60%; } 
+                }
+                &--autor{
+                    font-weight: $fw700;
+                }
+            }
+        }
+    }
+
+    @include max-screen(){ 
+        margin-bottom: 36px;
+    }
+}
